@@ -10,8 +10,6 @@ require("dotenv").config();
 
 const uri = process.env.MONGO_URI;
 
-app.use(cors());
-
 mongoose.Promise = global.Promise;
 
 mongoose
@@ -33,6 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
